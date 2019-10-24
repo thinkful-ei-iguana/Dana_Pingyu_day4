@@ -9,12 +9,17 @@ function fizzbuzz (num) {
 console.log(fizzbuzz(0));
 $('form').on('submit', e=>{
   e.preventDefault();
-  let usrNum = fizzbuzz($('input:input').val());
-  let divclass = typeof usrNum === 'number'?'': ' '+usrNum;
-  $('div.js-results').append(`<div class="fizz-buzz-item${divclass}">
-  <span>${usrNum}</span>
-</div>`);
+  let usrNum = $('input:input').val();
+  let arr = [...Array(Number(usrNum)+1).keys()].map(x=>fizzbuzz(x));
+  console.log(arr);
+  let divclass =  '';
+  $('div.js-results').html('');
+  arr.forEach(i=>{
+    divclass = typeof i === 'number'?'': ' '+i;
+
+    $('div.js-results').append(`<div class="fizz-buzz-item${divclass}">
+  <span>${i}</span>
+</div>`);});
 }
 );
-//add attribute to fizz and buzz or fizzbuzz items
-//add inner html
+
