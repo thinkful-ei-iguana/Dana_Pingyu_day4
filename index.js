@@ -6,13 +6,8 @@
 // Some of the methods we discussed in the previous assignment might be helpful here, but you should also use the jQuery docs and Google if you're not sure what to do here. Researching on your own is a key skill, and
 
 $('.thumbnail ').on('click', e => {
-    let pics = $(e.target).clone();
-    $('.hero>img').remove();
-    $('.hero').html(pics);
+  e.preventDefault();
+  let pics = $(e.currentTarget).clone().find('img');
+  $('.hero>img').remove();
+  $('.hero').html(pics);
 });
-
-$('.thumbnail').keypress(e => {
-    let pics = $(e.target).clone();
-    $('.hero>img').remove();
-    $('.hero').html(pics);
-})
